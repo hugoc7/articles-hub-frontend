@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { CSSProperties } from "react";
 import { ApiClient } from "./ApiClient";
+import { email } from "zod";
 
 
 function LoginForm() {
@@ -25,7 +26,7 @@ function LoginForm() {
   };
   const handleCreateUser = () => {
     console.log("Create user");
-    apiClient.createUser()
+    apiClient.createUser(username, password, 7)
   };
   const handleCreateArticle = (e: any) => {
     e.preventDefault(); 

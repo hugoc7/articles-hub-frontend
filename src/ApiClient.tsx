@@ -20,7 +20,7 @@ type LoginReturn =
 
 export class ApiClient {
 
-    rootUrl = "/api/webhook-test/";//proxy vite
+    rootUrl = "/api/";//proxy vite
 
     async getFavorites(userId: number)
     {
@@ -132,10 +132,16 @@ export class ApiClient {
     }
 
 
-    async createUser()
+    async createUser(email: string, password: string, coffeeConsumption: number)
     {
         const response = await fetch(this.rootUrl + "users/create", {
-            method: "POST"
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email, password, coffeeConsumption
+            })     
         });
 
         if (!response.ok) {
